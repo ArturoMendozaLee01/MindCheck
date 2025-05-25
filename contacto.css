@@ -13,7 +13,7 @@ body {
     align-items: center;
     overflow: hidden;
 
-    background-image: url('/Good/imagen5.jpg');
+    background-image: url('imagen5.jpg');
     background-repeat: no-repeat;
     background-size: 110% 110%; /* clave: imagen más ancha para que pueda moverse */    
     background-position: 0% 50%;
