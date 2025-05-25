@@ -1,41 +1,43 @@
-//step 1: get DOM
-let nextDom = document.getElementById('next');
-let prevDom = document.getElementById('prev');
-
-let carouselDom = document.querySelector('.carousel');
-let SliderDom = carouselDom.querySelector('.carousel .list');
-let thumbnailBorderDom = document.querySelector('.carousel .thumbnail');
+// DOM elements
+const nextDom = document.getElementById('next');
+const prevDom = document.getElementById('prev');
+const carouselDom = document.querySelector('.carousel');
+const SliderDom = carouselDom.querySelector('.carousel .list');
+const thumbnailBorderDom = document.querySelector('.carousel .thumbnail');
 let thumbnailItemsDom = thumbnailBorderDom.querySelectorAll('.item');
-let timeDom = document.querySelector('.carousel .time');
 
+// Inicial: mueve el primer thumbnail al final
 thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
-let timeRunning = 3000;
-let timeAutoNext = 7000;
 
-nextDom.onclick = function(){
-    showSlider('next');    
-}
+// Tiempos
+const timeRunning = 3000;
+const timeAutoNext = 7000;
 
-prevDom.onclick = function(){
-    showSlider('prev');    
-}
+// Botones
+nextDom.onclick = () => showSlider('next');
+prevDom.onclick = () => showSlider('prev');
+
+// Auto avance
 let runTimeOut;
 let runNextAuto = setTimeout(() => {
-    next.click();
-}, timeAutoNext)
-function showSlider(type){
-    let  SliderItemsDom = SliderDom.querySelectorAll('.carousel .list .item');
-    let thumbnailItemsDom = document.querySelectorAll('.carousel .thumbnail .item');
+    nextDom.click();
+}, timeAutoNext);
+
+// Función principal de cambio
+function showSlider(type) {
+    const SliderItemsDom = SliderDom.querySelectorAll('.carousel .list .item');
+    const thumbnailItemsDom = document.querySelectorAll('.carousel .thumbnail .item');
     
-    if(type === 'next'){
+    if (type === 'next') {
         SliderDom.appendChild(SliderItemsDom[0]);
         thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
         carouselDom.classList.add('next');
-    }else{
+    } else {
         SliderDom.prepend(SliderItemsDom[SliderItemsDom.length - 1]);
         thumbnailBorderDom.prepend(thumbnailItemsDom[thumbnailItemsDom.length - 1]);
         carouselDom.classList.add('prev');
     }
+
     clearTimeout(runTimeOut);
     runTimeOut = setTimeout(() => {
         carouselDom.classList.remove('next');
@@ -44,6 +46,6 @@ function showSlider(type){
 
     clearTimeout(runNextAuto);
     runNextAuto = setTimeout(() => {
-        next.click();
-    }, timeAutoNext)
+        nextDom.click();
+    }, timeAutoNext);
 }
