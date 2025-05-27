@@ -450,7 +450,7 @@ mark.brand {
 /* Recursos */
 
 .recursos {
-    background-image: url('/static/img/imagen6.2.jpg');
+    background-image: url('static/img/imagen6.2.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
